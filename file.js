@@ -20,6 +20,8 @@ export default function getFiles(vault, dirs) {
             const {content, data} = matter(fileContent)
             if (data.slug === undefined) return false
 
+            data.unixtime = data.date.getTime()
+
             mdFiles.push({
                 filePath,
                 fileName: path.basename(filePath),

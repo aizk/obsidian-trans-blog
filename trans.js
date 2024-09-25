@@ -8,7 +8,8 @@ export default function transMDFiles(mdFiles) {
     mdFiles.forEach(file => {
         // 文件冲突的时引用相对路径 it/regex/regex
         // 统一转小写匹配：因为在 obsidian 里面大小写不敏感，小写也可以引用大写文档，会因为大小写搜索不到文档
-        const wikiLinkAbsPath = path.relative(config.obsidian.vault, file.filePath).
+        const relatePath = path.relative(config.obsidian.vault, file.filePath)
+        const wikiLinkAbsPath = relatePath.
         replace(/\.md$/, '').
         toLowerCase()
 
@@ -17,6 +18,7 @@ export default function transMDFiles(mdFiles) {
         let newFile = {
             ...file,
             wikiLinkAbsPath,
+            saveTo: path.join(path.resolve(config.blog.output), relatePath)
         }
 
         // build mapping
