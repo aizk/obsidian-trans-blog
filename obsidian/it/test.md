@@ -15,7 +15,11 @@ This [Go Link](http://www.test.com) is Link
 
 [[Regex]] is need Trans to Link `a = 1`
 
-[LinkRef][LinkRef] is ?
+[LinkRef] is ?
+
+<Hidden>
+must hidden content.
+</Hidden>
 
 # Image
 

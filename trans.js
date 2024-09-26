@@ -38,6 +38,9 @@ export function transObsidianContent(file) {
     let content = file.content
     file.images = []
 
+    // support <Hidden> Tag
+    content = content.replace(/<Hidden>[\s\S]*?<\/Hidden>/g, '')
+
     const internalLinkRegex = /(!?)\[\[(.*?)\]\]/g;
     for (const match of content.matchAll(internalLinkRegex)) {
         // [
